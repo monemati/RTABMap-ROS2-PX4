@@ -1,0 +1,15 @@
+# ~/.config/tmuxinator/rtabmap_ros2_gazebo.yml
+name: rtabmap_ros2_gazebo
+root: /root
+
+windows:
+  - PX4_Autopilot:
+      root: /root/PX4-Autopilot
+      layout: even-vertical
+      panes:
+        - PX4_GZ_WORLD=warehouse PX4_SYS_AUTOSTART=4002 PX4_GZ_MODEL_POSE="0.0,0.0,1.0,0.00,0,3.14" PX4_GZ_MODEL=x500_depth ./build/px4_sitl_default/bin/px4
+  - RTAB-MAP:
+      root: /root
+      layout: even-vertical
+      panes:
+        - sleep 3 && ros2 launch simulation_launch full_simulation.launch.py
